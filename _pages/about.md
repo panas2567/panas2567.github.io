@@ -3,6 +3,13 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+My name is Ondřej Pánek, and I'm a data engineer from the Czech republic. 
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+My alma mater is at [CTU, FNSPE in Prague](https://fjfi.cvut.cz/en/), 
+where I finished my master's degree in the field of software engineering.
+After the studies, I've started working as a data engineer in a Prague's company
+[BigHub](https://www.bighub.ai/), where I was lucky enough to have the opportunity
+to work on various fast-paced projects on the technological edge of the data engineering, 
+cloud computing, and machine learning fields.
+
+Beside the tech world, I'm a proud member of my local ice-hockey team [HC SDH Lhotka Flames](https://www.instagram.com/sdhlhotkaflames/)!
