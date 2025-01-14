@@ -58,7 +58,7 @@ plugins:
 
 author:
   name   : "Ondřej Pánek"
-  avatar : "/assets/images/lhotka-flames-logo.pdf"
+  avatar : "/assets/images/lhotka-flames-logo.png"
   bio    : "The logo of our ice-hockey team. The resemblance to the Calgary Flames logo is purely coincidental."
   links:
     - label: "GitHub"
