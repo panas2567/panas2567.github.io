@@ -3,7 +3,7 @@ title: "Appreciation"
 categories:
   - Blog
 tags:
-  - Anything
+  - Personal
 ---
 
 The initial post of this personal website cannot be anything else but an appreciation of **Michael Rose**, the author

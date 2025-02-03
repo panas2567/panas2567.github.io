@@ -3,7 +3,7 @@ title: "Anybody reading this?"
 categories:
   - Blog
 tags:
-  - Anything
+  - Personal
 ---
 
 Is anybody reading this? I mean, except of me and some random web crawling bots. Anyway, it doesn't matter
