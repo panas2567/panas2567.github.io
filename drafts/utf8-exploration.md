@@ -7,19 +7,48 @@ tags:
   - Python
 ---
 
-The time has come.
+This article's goal is to introduce terms such as `ascii`, `unicode`, `utf-8`, and explain how they relate
+to each other. At the bottom, a few examples on how to operate with these entities in `Python` will be provided.
 
-The time for me to finally dig a bit into terms like _ascii, unicode, utf-8_ which a data engineer sees a lot but usually
-is like: _OK, I don't care who you are, but you seem familiar to me, hence I trust you._
+# Table of Contents
 
-I'll try to extract only the most important findings about this topic I believe can be helpful 
-for others in the same situation as me.
+#TODO: Create table of contents before finalizing
+#TODO: Check the references before finalizing.
 
+# General terms
+
+Even though everybody has (most likely) pretty much the same understanding of terms like a _character set_ and _encoding_,
+their definitions differ slightly across the internet.
+I chose the ones that seem the clearest and most rational to me.
+
+A **character set**
+: is a collection of characters used to represent text in a computer system[[9]](#nordvpn-charset).
+
+The character set might include numbers, letters, punctuation marks, symbols, emojis, and control characters.
+While a _character set_ in general might be considered simply as a set of characters, in the software engineering
+field, we usually understand that the character set defines **the mapping of its characters to numbers** as well.
+
+Example character set might look like the following:
+
+| ![charset.svg](../assets/images/utf-8/charset.svg) | 
+|:--------------------------------------------------:| 
+|              *Sample character set.*               |
+
+An **encoding**
+: is an unambiguous mapping between bit strings and the set of possible data[[8]](#ocw-encoding). 
+
+Note that there might be more encodings for a given character set.
+
+<a id="ascii"></a>
 # ASCII
 
-_American Standard Code for Information Interchange_ defines a numerical representation of 128 characters including
-lowercase and capital letters of the English alphabet, numbers, some special characters such as `&#$`, and other,
-non-printable characters. Check the original table from the [RFC20](https://www.rfc-archive.org/getrfc?rfc=20#gsc.tab=0).
+**ASCII** (American Standard Code for Information Interchange)
+: is a character encoding standard for electronic communications[[5]](#wiki-ascii).
+
+The statement above effectively means that ASCII defines a numerical representation of a set of selected characters.
+There are **128** characters including lowercase and capital letters of the English alphabet, numbers, some special characters 
+such as `&#$`, and other, non-printable characters. 
+Check the original table from the [RFC20](https://www.rfc-archive.org/getrfc?rfc=20#gsc.tab=0).
 
 ```text
 |----------------------------------------------------------------------|
@@ -64,34 +93,68 @@ non-printable characters. Check the original table from the [RFC20](https://www.
 +----------------------+-----------------------------------------------+
 ```
 
-This standard uses a single byte, where the most significant bit is set to 0, hence 7 bits remaining hold the information.
+This standard uses a single byte, where the most significant bit is set to 0, hence 7 remaining bits hold the information.
 
 Well, ASCII apparently fulfilled its purpose to define the basic set of the most common characters, yet the limitation
-of 128 entities is obvious. Fortunately, there is the _Unicode_ standard with the _UTF-8_ encoding, thanks to which 
+of 128 entries is obvious. Fortunately, there is the _Unicode_ standard with the _UTF-8_ encoding, thanks to which 
 I can write beautiful Czech sentence like: _Ověnčený chmýřím, neštěstí šíříš._ Please, don't ask me to translate this :grimacing:. 
 
+<a id="unicode"></a>
 # Unicode
 
-Unicode standard defines more characters. Way more characters. Actually, it's capable of mapping more than 1.1 million
-of unique characters.
+The **Unicode** Standard
+: is a text encoding standard maintained by the Unicode Consortium designed to support the use of text in all of the 
+world's writing systems that can be digitized[[6]](#wiki-unicode).
 
-Currently version of Unicode ([16.0](https://en.wikibooks.org/wiki/Unicode/Versions#Unicode_16.0)) defines 
-154,998 characters. The limit for the amount of characters described by the Unicode depends on its encodings, 
-more specifically on [_UTF-16_](https://stackoverflow.com/questions/130438/do-utf-8-utf-16-and-utf-32-differ-in-the-number-of-characters-they-can-store),
-which is the most restricted compared to the two others _UTF-8_ and _UTF-32_.
+The standard was invented to reflect the needs of the internet to be able to represent any character in a unified way.
+Unicode is a character set, which includes ASCII characters, different accents, CJK characters, emojis, etc.
+This standard could define more than 1.1 million of unique characters in total. 
 
-However, only one of these plays the crucial role in today's world of computers, and it is... **UTF-16**.
+Current version of the Unicode ([16.0](https://en.wikibooks.org/wiki/Unicode/Versions#Unicode_16.0)) defines 
+154,998 characters (so still a lot of free slots). 
+The limit for the amount of characters described by the Unicode depends on its encodings, more specifically on _UTF-16_,
+which is [the most restricted](https://stackoverflow.com/questions/130438/do-utf-8-utf-16-and-utf-32-differ-in-the-number-of-characters-they-can-store)
+compared to the two other formats _UTF-8_ and _UTF-32_.
 
-Just kidding, here it's a bit similar to a series of movies. _Usually_, the episodes with the smaller numbers are
-better. _UTF-8_ is the variant we're interested in the most.
+However, the _UTF-8_ version of the format plays the main role in today's world.
 
+<a id="utf-8"></a>
 # UTF-8
 
-Based on the current statistics (2025), the usage of this character encoding is more than [98%](https://w3techs.com/technologies/overview/character_encoding).
+Based on the current statistics (2025), the usage across the internet of this character encoding is more than [98%](https://w3techs.com/technologies/overview/character_encoding).
 
-TODO: Explain what actually is the character encoding and why Unicode as a charset has to define it's encodings (to know what characters is it able to define).
+**The Unicode Transformation Format - 8 bit**
+: is a character encoding standard for electronic communication, defined by the Unicode Standard[[7]](wiki-utf8).
 
+The main difference between the Unicode and UTF-8 is obvious now. Unicode is a _character set_, i.e. mapping of the 
+different characters/symbols to numbers, and UTF-8 is an _encoding_, i.e. a way how to translate numbers to bytes,
+a series of 1's and 0's.
+
+
+
+
+
+
+<a name="examples"></a>
+# Examples
+
+<a name="references"></a>
 # References
-- [RFC20: ASCII Format for Network Interchange](https://www.rfc-archive.org/getrfc?rfc=20#gsc.tab=0)
-- [RFC5198: Unicode Format for Network Interchange](https://www.rfc-archive.org/getrfc?rfc=5198#gsc.tab=0)
-- [SO: How many characters can be mapped with Unicode?](https://stackoverflow.com/questions/5924105/how-many-characters-can-be-mapped-with-unicode)
+<a id="rfc20-ascii"></a>
+1. [RFC20: ASCII Format for Network Interchange](https://www.rfc-archive.org/getrfc?rfc=20#gsc.tab=0)
+<a id="rfc5198-unicode"></a>
+1. [RFC5198: Unicode Format for Network Interchange](https://www.rfc-archive.org/getrfc?rfc=5198#gsc.tab=0)
+<a id="so-unicode"></a>
+1. [SO: How many characters can be mapped with Unicode?](https://stackoverflow.com/questions/5924105/how-many-characters-can-be-mapped-with-unicode)
+<a id="w3techs"></a>
+1. [w3techs.com: Usage statistics of character encodings for websites](https://w3techs.com/technologies/overview/character_encoding)
+<a id="wiki-ascii"></a>
+1. [Wikipedia: ASCII](https://en.wikipedia.org/wiki/ASCII)
+<a id="wiki-unicode"></a>
+1. [Wikipedia: Unicode](https://en.wikipedia.org/wiki/Unicode) 
+<a id="wiki-utf8"></a>
+1. [Wikipeda: UTF-8](https://en.wikipedia.org/wiki/UTF-8)
+<a id="ocw-encoding"></a>
+1. [MIT OCW: Encoding](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c1/c1s2/c1s2v4/)
+<a id="nordvpn-charset"></a>
+1. [NordVPN: Character Set](https://nordvpn.com/cybersecurity/glossary/character-set/)
