@@ -21,6 +21,8 @@ Even though everybody has (most likely) pretty much the same understanding of te
 their definitions differ slightly across the internet.
 I chose the ones that seem the clearest and most rational to me.
 
+## Character set
+
 A **character set**
 : is a collection of characters used to represent text in a computer system[[9]](#nordvpn-charset).
 
@@ -28,16 +30,35 @@ The character set might include numbers, letters, punctuation marks, symbols, em
 While a _character set_ in general might be considered simply as a set of characters, in the software engineering
 field, we usually understand that the character set defines **the mapping of its characters to numbers** as well.
 
-Example character set might look like the following:
+**Example**
+
+A character set might look like the following:
 
 | ![charset.svg](../assets/images/utf-8/charset.svg) | 
 |:--------------------------------------------------:| 
 |              *Sample character set.*               |
 
+
+## Encoding
+
 An **encoding**
 : is an unambiguous mapping between bit strings and the set of possible data[[8]](#ocw-encoding). 
 
-Note that there might be more encodings for a given character set.
+That is an _encoding_ defines how is each character from a character set uniquely translated to a sequence of one or more bits.
+Note that there might be more encodings for a single character set.
+
+**Example**
+
+In the sample character set, there is a total of 26 characters. Hence, 5 bits ($2^5 = 32$) is enough to cover all characters.
+Then the encoding of the sample character set might be defined as:
+
+| ![charset.svg](../assets/images/utf-8/encoding.svg) | 
+|:---------------------------------------------------:| 
+|       *Encoding of the Sample character set.*       |
+
+Let's say we wanted to encode word `firefly`. Hence, based on the encoding, this string of characters would be represented with
+a sequence of bits:
+
 
 <a id="ascii"></a>
 # ASCII
