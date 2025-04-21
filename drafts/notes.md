@@ -1,6 +1,7 @@
 
 # other ideas
 - base64 encoding
+- pangeo mind map (how the different tools relate together)
 
 # utf8-exploration
 - Add sketches
