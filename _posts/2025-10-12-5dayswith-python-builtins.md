@@ -1,5 +1,5 @@
 ---
-title: "5 days with Python built-ins"
+title: "5 Days With Python Built-ins"
 categories:
   - NDaysWith
 tags:
