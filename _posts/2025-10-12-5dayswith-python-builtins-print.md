@@ -1,5 +1,5 @@
 ---
-title: "5 days with Python built-ins"
+title: "5 Days With Python Built-ins (`print`)"
 categories:
   - NDaysWith
 tags:
@@ -12,17 +12,13 @@ toc_label: "Elements"
 toc_icon: "list-ol"  # corresponding Font Awesome icon name (without fa prefix)
 ---
 
-I'm picking up 5 Python built-ins, and I'll invest few minutes per day per each of them. As a starter, the built-ins
-chosen are the ones I use the most on a daily basis. Am I going to find out the potential usage of these 
-I had no idea about?
-
 > :gear: Python version: 3.14
-
-# Day 1 - `print()`
 
 The header of the function: 
 
-`print(*objects, sep=' ', end='\n', file=None, flush=False)`
+```python
+print(*objects, sep=' ', end='\n', file=None, flush=False)
+```
 
 My typical usage:
 ```python
@@ -117,14 +113,6 @@ print("Hello, will you go on a date with me? <3", file=DrunkOutput)
 
 Implementing a custom class like this uncovers an unexpected catch (or rather more than one), 
 but that would've been for a separate post itself.
-
-# Day 2 - `open()`
-
-# Day 3 - `len()`
-
-# Day 4 - `dict()`
-
-# Day 5 - `dir()`
 
 # References
 
