@@ -22,7 +22,7 @@ on a single page._
 The goal of these small posts is not to go to the very detail, but rather uncover the functionality that's 
 not that regularly used (understand - by me :wink:).
 
-# [Day 1 - `print()`](2025-10-12-5dayswith-python-builtins-print.md)
+# [Day 1 - `print()`]({% post_url 2025-10-12-5dayswith-python-builtins-print %})
 
 - `sep` &#8594; Separator
 - `end` &#8594; Ending character
