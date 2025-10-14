@@ -6,6 +6,10 @@ tags:
   - Python
   - Programming
   - NDaysWith
+
+toc: true
+toc_label: "Elements"
+toc_icon: "list-ol"  # corresponding Font Awesome icon name (without fa prefix)
 ---
 
 I'm picking up 5 Python built-ins, and I'll invest few minutes per day per each of them. As a starter, the built-ins
