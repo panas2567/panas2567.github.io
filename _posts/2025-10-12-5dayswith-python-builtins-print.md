@@ -114,6 +114,6 @@ print("Hello, will you go on a date with me? <3", file=DrunkOutput)
 Implementing a custom class like this uncovers an unexpected catch (or rather more than one), 
 but that would've been for a separate post itself.
 
-# References
+## References
 
 - [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html)

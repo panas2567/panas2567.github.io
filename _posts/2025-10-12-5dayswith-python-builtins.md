@@ -29,9 +29,9 @@ not that regularly used (understand - by me :wink:).
 - `flush` &#8594; Flush buffer
 - `file` &#8594; Output file
 
-# Day 2 - `open()` (coming soon)
+# Day 2 - `len()` (coming soon)
 
-# Day 3 - `len()` (coming soon)
+# Day 3 - `open()` (coming soon)
 
 # Day 4 - `dict()` (coming soon)
 
