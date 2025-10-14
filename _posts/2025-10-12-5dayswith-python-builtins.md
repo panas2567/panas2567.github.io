@@ -14,7 +14,7 @@ toc_icon: "list-ol"  # corresponding Font Awesome icon name (without fa prefix)
 
 I'm picking up 5 Python built-ins, and I'll invest few minutes per day per each of them. As a starter, the built-ins
 chosen are the ones I use the most on a daily basis. Am I going to find out the potential usage of these 
-I had no idea about? 
+I had no idea about?
 
 _Note: This is the index for the separate sub-parts. I found it a bit more uncluttered versus having the whole content 
 on a single page._
