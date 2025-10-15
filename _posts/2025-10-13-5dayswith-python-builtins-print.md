@@ -31,7 +31,7 @@ one above. Let's explore the other options.
 
 ## `sep` &#8594; Separator
 
-`sep` argument let's you define a custom separator between the objects, defaults to a blank space.
+`sep` argument lets you define a custom separator between the objects, defaults to a blank space.
 
 ```python
 print("a", "b", "c", sep=" & ")
@@ -95,7 +95,7 @@ import random
 class DrunkOutput:
     @classmethod
     def write(cls, msg: str):
-        msg = msg[:30] # Max 30 character are sent. The message was sent unfinished...
+        msg = msg[:30]  # Max 30 character are sent. The message was sent unfinished...
         wrong_idxs = random.sample(range(len(msg)), len(msg) // 5)  # Random characters are missed
         drunk_msg = "".join([c for i, c in enumerate(msg) if i not in wrong_idxs])  # Remove the random chars
         sys.stdout.write(drunk_msg)

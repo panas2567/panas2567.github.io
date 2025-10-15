@@ -12,6 +12,8 @@ toc_label: "Elements"
 toc_icon: "list-ol"  # corresponding Font Awesome icon name (without fa prefix)
 ---
 
+Function `len` returns the number of items of an object, its length.
+
 > :gear: Python version: 3.14
 
 The header of the function:
@@ -20,8 +22,8 @@ The header of the function:
 len(object, /)
 ```
 
-Function `len` returns the number of items of an object, its length.
-For example, I want to quickly check the length of a list or a pandas DataFrame to get number of rows.
+Me, for example, I want to quickly check the length of a list or a pandas DataFrame to get number of rows,
+number of characters in a string, etc.
 
 ```python
 >>> len("25 characters long string")
@@ -35,7 +37,7 @@ This won't work though:
 >>> len(1)
 ```
 
-with traceback:
+giving us an error:
 
 ```text
 Traceback (most recent call last):
@@ -46,7 +48,7 @@ TypeError: object of type 'int' has no len()
 ```
 
 The argument to the `len` function has to be an object with the `__len__` method implemented.
-`len` is just calling the object's `__len__` with additional sanity checks, like that the returned
+`len` is just calling the object's `__len__` method with additional sanity checks, like that the returned
 value is `int` and `<= sys.maxsize`.
 
 For example, I'm interested in defining the length of a centipede according to its number of legs:
@@ -57,7 +59,7 @@ class AlienCentipede:
     return 100
 ```
 
-Then I'm able to obtaine its length returns by calling the `len` built-in on it:
+Then I'm able to obtain its length by calling the `len` built-in on it:
 
 ```python
 >>> len(AlienCentipede())
@@ -67,7 +69,7 @@ Then I'm able to obtaine its length returns by calling the `len` built-in on it:
 The advantage of using `len` over calling the `__len__` method directly (and in general this applies to all built-ins I believe)
 is the already mentioned sanity check. See the difference in the following example.
 
-If the class would be for some (?) reason defined like this:
+If the class would've been defined like this (for some (?) reason):
 
 ```python
 class AmILengthMeasurable:
