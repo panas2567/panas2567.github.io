@@ -1,1 +1,10 @@
 $link-color: red;
+
+// --- Custom spacing for Hide Output button ---
+.page__content pre > .btn.btn--secondary {
+  right: 1.5em;  // move button further left (increase value to move it more)
+  top: 0.45em;   // adjust vertical alignment if needed
+  padding: 0.2rem 0.45rem; // keep consistent size with Copy button
+  position: absolute;
+}
+
