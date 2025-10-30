@@ -1,1 +1,26 @@
 $link-color: red;
+
+/* Minimal global outputs toggle line */
+.page__content > .code-outputs-global {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.page__content > .code-outputs-global .code-outputs-toggle {
+  background: none;
+  border: 0;
+  padding: 0.15rem 0.35rem;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: underline;
+}
+
+.page__content > .code-outputs-global .code-outputs-toggle:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
