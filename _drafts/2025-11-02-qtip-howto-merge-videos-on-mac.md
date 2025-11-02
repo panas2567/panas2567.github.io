@@ -1,5 +1,5 @@
 ---
-title: "How to merge two videos (on pretty much any operating system)"
+title: "How to merge two videos easily (on pretty much any operating system)"
 categories:
   - QuickTip
 tags:

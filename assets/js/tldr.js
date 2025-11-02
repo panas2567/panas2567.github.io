@@ -116,13 +116,21 @@
       }
     }
 
-    // One-time enhancer call (for copy buttons etc.)
+    // One-time enhancer call (for copy + hide buttons inside TL;DR)
     let enhanced = false;
     function enhanceOnce() {
       if (enhanced) return;
+
+      // 1) Copy buttons create the .codeframe wrapper we reuse
       if (typeof window.initCopyButtons === 'function') {
-        window.initCopyButtons($section[0]); // initialize copy buttons only inside TL;DR
+        window.initCopyButtons($section[0]);
       }
+
+      // 2) Now place the Hide Output buttons next to the copy buttons
+      if (typeof window.initHideOutputButtons === 'function') {
+        window.initHideOutputButtons($section[0]);
+      }
+
       enhanced = true;
     }
 
@@ -132,7 +140,7 @@
     function showTLDR() {
       if (!visible) {
         insertSection();
-        enhanceOnce(); // run enhancers the first time we show TL;DR
+        enhanceOnce(); // <— ensures TL;DR gets its own buttons
         if ($metaBtn) {
           $metaBtn.text('Hide TL;DR').attr('aria-pressed', 'false');
           applyShownStyle();

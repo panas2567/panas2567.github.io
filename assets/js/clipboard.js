@@ -48,8 +48,8 @@ window.initCopyButtons = function initCopyButtons(scope = document) {
       // Overlay placement: pinned to wrapper's top-right
       .css({
         position: 'absolute',
-        top: '0.45em',
-        right: '1em',
+        top: '0.05em',
+        right: '0.05em',
         zIndex: 2,           // above code content
         pointerEvents: 'auto'
       })
