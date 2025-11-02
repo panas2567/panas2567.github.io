@@ -1,4 +1,10 @@
-/* tldr.js — TL;DR section with top-left badge + meta toggle (inline-styled) */
+/* tldr.js — TL;DR built from .tldr / .tldr-only
+ * - Single toggle button in meta header (styled like the badge)
+ * - TL;DR section inserted directly under the meta header
+ * - Hidden by default
+ * - Uses flow-root + z-index to avoid overlap / click issues
+ * Requires jQuery.
+ */
 (function () {
   'use strict';
 
@@ -19,40 +25,23 @@
     const $tldrOnly = $content.find('.tldr-only');  // move into TL;DR, remove from article
     if ($tldrKeep.length === 0 && $tldrOnly.length === 0) return;
 
-    // --- Build section (no title element; badge acts as title+toggle) ---
+    // Build TL;DR section (no internal button)
     const $section = $(
       '<section id="tldr" class="tldr-section" aria-label="TL;DR">' +
-        '<button type="button" class="tldr-badge" aria-expanded="true" title="Hide TL;DR">TL;DR</button>' +
         '<div class="tldr-body"></div>' +
       '</section>'
     );
 
-    // Section styling (inline, minimal)
+    // Section styling (inline) — flow-root prevents margin-collapsing with meta
     $section.css({
       position: 'relative',
-      margin: '0 0 1rem 0',
-      padding: '2.1rem 0.9rem 0.9rem 0.9rem', // top padding so badge doesn't overlap content
+      display: 'flow-root',                // key to stop margin-collapsing
+      zIndex: 1,                           // keep it below the meta header
+      margin: '0.8rem 0 1rem 0',           // vertical gap from meta and following content
+      padding: '0.9rem',
       borderRadius: '0.6rem',
       background: 'rgba(255, 215, 0, 0.08)', // soft gold tint
       borderLeft: '4px solid rgba(255, 165, 0, 0.6)'
-    });
-
-    const $badge = $section.find('.tldr-badge');
-
-    // Badge styling (top-left corner)
-    $badge.css({
-      position: 'absolute',
-      top: '0.6rem',
-      left: '0.6rem',
-      padding: '0.35rem 0.65rem',
-      border: 'none',
-      borderRadius: '0.45rem',
-      fontWeight: 700,
-      letterSpacing: '0.02em',
-      cursor: 'pointer',
-      boxShadow: '0 2px 6px rgba(0,0,0,.25)',
-      transition: 'all .25s ease',
-      // visible state colors applied below by applyShownStyle/applyHiddenStyle
     });
 
     const $body = $section.find('.tldr-body');
@@ -63,79 +52,106 @@
 
     if ($body.children().length === 0) return;
 
-    // Mount TL;DR right after page meta if present; else at top
+    // Find meta header and ensure it stays on top/clickable
     const $meta = $('.page__meta').first();
-    if ($meta.length) $section.insertAfter($meta);
-    else $content.prepend($section);
+    if ($meta.length) {
+      $meta.css({ position: 'relative', zIndex: 2 });  // sits above TL;DR
+    }
 
-    // --- Meta toggle (right next to read-time) ---
+    // Where to insert the section
+    const insertSection = () => {
+      if ($meta.length) {
+        $section.insertAfter($meta);     // exactly under meta header
+      } else {
+        $content.prepend($section);      // fallback
+      }
+    };
+
+    // Create the meta toggle button next to read-time
     let $metaBtn = null;
     if ($meta.length) {
       const $readtime = $meta.find('.page__meta-readtime').first();
       if ($readtime.length) {
-        $('<span class="page__meta-sep" aria-hidden="true"> • </span>').css({
-          opacity: .6, margin: '0 .35em'
-        }).insertAfter($readtime);
+        // separator like other meta items
+        $('<span class="page__meta-sep" aria-hidden="true"> • </span>')
+          .css({ opacity: .6, margin: '0 .35em' })
+          .insertAfter($readtime);
 
         const $mount = $('<span class="page__meta-tldr"></span>').insertAfter($readtime.next());
-        $metaBtn = $('<button type="button" class="tldr-meta-toggle" aria-pressed="false">Hide TL;DR</button>').css({
-          background: 'none',
-          border: '0',
-          padding: '0',
-          margin: '0',
-          font: 'inherit',
-          color: 'inherit',
-          textDecoration: 'underline',
-          cursor: 'pointer',
-        });
+        $metaBtn = $('<button type="button" class="tldr-meta-toggle" aria-pressed="true">Show TL;DR</button>');
         $mount.append($metaBtn);
+
+        // Style the meta button like the badge (inline)
+        $metaBtn.css({
+          border: 'none',
+          padding: '0.35rem 0.65rem',
+          margin: '0',
+          borderRadius: '0.45rem',
+          fontWeight: 700,
+          letterSpacing: '0.02em',
+          cursor: 'pointer',
+          boxShadow: '0 2px 6px rgba(0,0,0,.25)',
+          transition: 'all .25s ease'
+        });
       }
     }
 
-    // --- Styles for states ---
+    // State styles
     function applyShownStyle() {
-      // badge golden like sun (section visible)
-      $badge.css({
-        background: 'linear-gradient(135deg, #FFD700, #FFA500)',
-        color: '#000',
-        boxShadow: '0 0 10px #FFD700, 0 0 18px #FFA500 inset'
-      });
+      // gold sun look
+      if ($metaBtn) {
+        $metaBtn.css({
+          background: 'gold',
+          color: '#000',
+          boxShadow: '0 0 10px #FFD700, inset 0 0 18px #FFA500'
+        });
+      }
     }
     function applyHiddenStyle() {
-      // badge code-like lime/black (section hidden)
-      $badge.css({
-        backgroundColor: '#000',
-        color: '#ADFF2F',
-        boxShadow: '0 0 6px #ADFF2F, inset 0 0 10px rgba(0,255,0,.25)'
-      });
-    }
-
-    function setVisible(show) {
-      if (show) {
-        $body.slideDown(140);
-        $badge.attr('aria-expanded', 'true').attr('title', 'Hide TL;DR');
-        applyShownStyle();
-        if ($metaBtn) $metaBtn.text('Hide TL;DR').attr('aria-pressed', 'false');
-      } else {
-        $body.slideUp(140);
-        $badge.attr('aria-expanded', 'false').attr('title', 'Show TL;DR');
-        applyHiddenStyle();
-        if ($metaBtn) $metaBtn.text('Show TL;DR').attr('aria-pressed', 'true');
+      // code-like lime on black
+      if ($metaBtn) {
+        $metaBtn.css({
+          backgroundColor: 'aqua',
+          color: 'darkblue',
+          boxShadow: '0 0 6px #ADFF2F, inset 0 0 10px rgba(0,255,0,.25)'
+        });
       }
     }
 
-    // Initial state: visible
-    setVisible(true);
+    // Visibility logic — hidden by default
+    let visible = false;
 
-    // Sync interactions
-    $badge.on('click', function (e) {
-      e.preventDefault();
-      setVisible(!$body.is(':visible'));
-    });
+    function showTLDR() {
+      if (!visible) {
+        insertSection();
+        if ($metaBtn) {
+          $metaBtn.text('Hide TL;DR').attr('aria-pressed', 'false');
+          applyShownStyle();
+        }
+        visible = true;
+      }
+    }
+
+    function hideTLDR() {
+      if (visible) {
+        $section.detach(); // remove from layout entirely
+        if ($metaBtn) {
+          $metaBtn.text('Show TL;DR').attr('aria-pressed', 'true');
+          applyHiddenStyle();
+        }
+        visible = false;
+      }
+    }
+
+    // Initial state: hidden
+    applyHiddenStyle();
+    hideTLDR();
+
+    // Bind meta button
     if ($metaBtn) {
       $metaBtn.on('click', function (e) {
         e.preventDefault();
-        setVisible(!$body.is(':visible'));
+        visible ? hideTLDR() : showTLDR();
       });
     }
   });
