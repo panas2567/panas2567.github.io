@@ -32,10 +32,10 @@ First approach, **assignment to a variable**, needs awareness of closing the fil
 ```python
 f = open("test.txt", "w")
 f.closed
->>> False
+"""<cellout>False</cellout>"""
 f.close()
 f.closed
->>> True
+"""<cellout>True</cellout>"""
 ```
 
 The second, **using context manager**, is the one usually used, and recommended.
@@ -76,13 +76,13 @@ with open("exclusive.txt", "x") as f:
 with open("exclusive.txt", "x") as f:
     f.write("I'm doing this only once...")
 
-"""
+"""<cellout>
 Traceback (most recent call last):
   File "<python-input-34>", line 1, in <module>
     with open("exclusive.txt", "x") as f:
          ~~~~^^^^^^^^^^^^^^^^^^^^^^
 FileExistsError: [Errno 17] File exists: 'exclusive.txt'
-"""
+</cellout>"""
 ```
 
 ### Appending
@@ -104,16 +104,16 @@ Then we can read this file in two different ways:
 with open("b.txt", "r") as f:
     s = f.read()
 s
->>> 'á'
+"""<cellout>'á'</cellout>"""
 type(s)
->>> <class 'str'>
+"""<cellout><class 'str'></cellout>"""
 # Second - binary mode
 with open("b.txt", "rb") as f:
     s = f.read()
 s
->>> b'\xc3\xa1'
+"""<cellout>b'\xc3\xa1'</cellout>"""
 type(s)
->>> <class 'bytes'>
+"""<cellout><class 'bytes'></cellout>"""
 ```
 
 In the second case, the `read` method of the file-like object returns `bytes` instead of `str`. 
@@ -128,15 +128,52 @@ The difference is only that with `w+`, then file is truncated with
 its opening, whereas the `r+` option preserves the content.
 
 ```python
->>> with open("baz.txt", "r+") as f:
-...     print(f.read())
-...     f.write("123")
-...     
+with open("baz.txt", "r+") as f:
+    print(f.read())
+    f.write("123")
+"""<cellout>     
 some text
 3
+</cellout>"""
 ```
 
 ## `buffering` &#8594; 
+
+I like the two following description taken from a [SO question](https://stackoverflow.com/questions/29712445/what-is-the-use-of-buffering-in-pythons-built-in-open-function):
+1. The `buffering` parameter determines when the data you are sending to the stream is actually saved to the disk.
+2. Buffering is the process of storing a chunk of a file in a temporary memory until the file loads completely.
+
+As an example, we could define `buffering=1` to enforce line buffering for the text mode.
+That means, that the output would be flushed after each line written to the file.
+See the difference between the two following examples:
+
+**No custom buffering**
+
+```python
+import time
+with open("foo.txt", "w") as f:
+    for i in range(10):
+        _ = f.write(f"round: {i}\n")
+        time.sleep(1)
+```
+
+**buffering=1**
+
+```python
+import time
+with open("foo.txt", "w", buffering=1) as f:
+    for i in range(10):
+        _ = f.write(f"round: {i}\n")
+        time.sleep(1)
+```
+
+The result:
+
+<video width="900" height="500" controls="controls">
+  <source src="/assets/videos/buffering-combined.mov" type="video/mp4">
+</video>
+
+TODO: fix the video with `_ = f.write(f"round: {i}\n")` so the code on the left doesn't move
 
 ## `encoding` &#8594; 
 
@@ -150,4 +187,4 @@ some text
 
 ## References
 
-- [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html)
+- [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html){:target="_blank"}

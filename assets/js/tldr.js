@@ -3,6 +3,7 @@
  * - TL;DR section inserted directly under the meta header
  * - Hidden by default
  * - Uses flow-root + z-index to avoid overlap / click issues
+ * - Calls optional window.initCopyButtons($section[0]) once when first shown
  * Requires jQuery.
  */
 (function () {
@@ -35,9 +36,9 @@
     // Section styling (inline) — flow-root prevents margin-collapsing with meta
     $section.css({
       position: 'relative',
-      display: 'flow-root',                // key to stop margin-collapsing
-      zIndex: 1,                           // keep it below the meta header
-      margin: '0.8rem 0 1rem 0',           // vertical gap from meta and following content
+      display: 'flow-root',                // stop margin-collapsing
+      zIndex: 1,                           // below the meta header
+      margin: '0.8rem 0 1rem 0',
       padding: '0.9rem',
       borderRadius: '0.6rem',
       background: 'rgba(255, 215, 0, 0.08)', // soft gold tint
@@ -52,18 +53,18 @@
 
     if ($body.children().length === 0) return;
 
-    // Find meta header and ensure it stays on top/clickable
+    // Meta header stays clickable
     const $meta = $('.page__meta').first();
     if ($meta.length) {
-      $meta.css({ position: 'relative', zIndex: 2 });  // sits above TL;DR
+      $meta.css({ position: 'relative', zIndex: 2 });
     }
 
     // Where to insert the section
     const insertSection = () => {
       if ($meta.length) {
-        $section.insertAfter($meta);     // exactly under meta header
+        $section.insertAfter($meta);
       } else {
-        $content.prepend($section);      // fallback
+        $content.prepend($section);
       }
     };
 
@@ -72,7 +73,6 @@
     if ($meta.length) {
       const $readtime = $meta.find('.page__meta-readtime').first();
       if ($readtime.length) {
-        // separator like other meta items
         $('<span class="page__meta-sep" aria-hidden="true"> • </span>')
           .css({ opacity: .6, margin: '0 .35em' })
           .insertAfter($readtime);
@@ -98,7 +98,6 @@
 
     // State styles
     function applyShownStyle() {
-      // gold sun look
       if ($metaBtn) {
         $metaBtn.css({
           background: 'gold',
@@ -108,7 +107,6 @@
       }
     }
     function applyHiddenStyle() {
-      // code-like lime on black
       if ($metaBtn) {
         $metaBtn.css({
           backgroundColor: 'aqua',
@@ -118,12 +116,23 @@
       }
     }
 
+    // One-time enhancer call (for copy buttons etc.)
+    let enhanced = false;
+    function enhanceOnce() {
+      if (enhanced) return;
+      if (typeof window.initCopyButtons === 'function') {
+        window.initCopyButtons($section[0]); // initialize copy buttons only inside TL;DR
+      }
+      enhanced = true;
+    }
+
     // Visibility logic — hidden by default
     let visible = false;
 
     function showTLDR() {
       if (!visible) {
         insertSection();
+        enhanceOnce(); // run enhancers the first time we show TL;DR
         if ($metaBtn) {
           $metaBtn.text('Hide TL;DR').attr('aria-pressed', 'false');
           applyShownStyle();

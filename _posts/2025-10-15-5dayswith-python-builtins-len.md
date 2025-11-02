@@ -26,25 +26,25 @@ Me, for example, I want to quickly check the length of a list or a pandas DataFr
 number of characters in a string, etc.
 
 ```python
->>> len("25 characters long string")
->>> len(range(24))
->>> len([1, 2]*10)
+len("25 characters long string")
+"""<cellout>25</cellout>"""
+len(range(24))
+"""<cellout>24</cellout>"""
+len([1, 2]*10)
+"""<cellout>20</cellout>"""
 ```
 
 This won't work though:
 
 ```python
->>> len(1)
-```
-
-giving us an error:
-
-```text
+len(1)
+"""<cellout>
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
     len(1)
     ~~~^^^
 TypeError: object of type 'int' has no len()
+</cellout>"""
 ```
 
 The argument to the `len` function has to be an object with the `__len__` method implemented.
@@ -62,8 +62,8 @@ class AlienCentipede:
 Then I'm able to obtain its length by calling the `len` built-in on it:
 
 ```python
->>> len(AlienCentipede())
-100
+len(AlienCentipede())
+"""<cellout>100</cellout>"""
 ```
 
 The advantage of using `len` over calling the `__len__` method directly (and in general this applies to all built-ins I believe)
@@ -80,21 +80,20 @@ class AmILengthMeasurable:
 Then we would see the difference between the following two calls:
 
 ```python
->>> AmILengthMeasurable().__len__()
-
-"my length is 10 meters, so I have to be!"
-
->>> len(AmILengthMeasurable())
-
+AmILengthMeasurable().__len__()
+"""<cellout>"my length is 10 meters, so I have to be!"</cellout>"""
+len(AmILengthMeasurable())
+"""<cellout>
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
     len(AmILengthMeasurable())
     ~~~^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: 'str' object cannot be interpreted as an integer
+</cellout>"""
 ```
 
 Question to the "crowd": Why did I name the centipede _AlienCentipede_?
 
 ## References
 
-- [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html)
+- [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html){:target="_blank"}

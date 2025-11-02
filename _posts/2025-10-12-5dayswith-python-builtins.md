@@ -41,4 +41,4 @@ not that regularly used (understand - by me :wink:).
 
 # References
 
-- [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html)
+- [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html){:target="_blank"}

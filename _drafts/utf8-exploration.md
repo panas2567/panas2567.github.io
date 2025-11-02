@@ -34,9 +34,9 @@ field, we usually understand that the character set defines **the mapping of its
 
 A character set might look like the following:
 
-| ![charset.svg](../assets/images/utf-8/charset.svg) | 
-|:--------------------------------------------------:| 
-|              *Sample character set.*               |
+| ![charset.svg](/assets/images/utf-8/charset.svg) | 
+|:------------------------------------------------:| 
+|             *Sample character set.*              |
 
 
 ## Encoding
@@ -52,9 +52,9 @@ Note that there might be more encodings for a single character set.
 In the sample character set, there is a total of 26 characters. Hence, 5 bits ($2^5 = 32$) is enough to cover all characters.
 Then the encoding of the sample character set might be defined as:
 
-| ![charset.svg](../assets/images/utf-8/encoding.svg) | 
-|:---------------------------------------------------:| 
-|       *Encoding of the Sample character set.*       |
+| ![charset.svg](/assets/images/utf-8/encoding.svg) | 
+|:-------------------------------------------------:| 
+|      *Encoding of the Sample character set.*      |
 
 Let's say we wanted to encode word `firefly`. Hence, based on the encoding, this string of characters would be represented with
 a sequence of bits:

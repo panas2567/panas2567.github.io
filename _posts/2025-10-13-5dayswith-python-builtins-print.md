@@ -78,7 +78,7 @@ for i in range(5):
 Then, the difference is that we don't get one character printed to stdout per second.
 We only get the final result `0 1 2 3 4 ` at once after the 5 seconds elapse.
 That's because the output is buffered, until it receives a newline character, or due to other events.
-More details are e.g. in this [SO question](https://stackoverflow.com/questions/15608229/what-does-prints-flush-do).
+More details are e.g. in this [SO question](https://stackoverflow.com/questions/15608229/what-does-prints-flush-do){:target="_blank"}.
 
 ## `file` &#8594; Output file
 
@@ -116,4 +116,4 @@ but that would've been for a separate post itself.
 
 ## References
 
-- [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html)
+- [Python Built-in Functions official docs](https://docs.python.org/3/library/functions.html){:target="_blank"}
