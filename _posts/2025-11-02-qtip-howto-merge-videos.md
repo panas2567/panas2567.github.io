@@ -1,9 +1,9 @@
 ---
-title: "How to merge two videos easily (on pretty much any operating system)"
+title: "How to Merge Two Videos Easily (on pretty much any operating system)"
 categories:
   - QuickTip
 tags:
-  - Mac
+  - FFmpeg
   - QuickTip
 
 toc: true
@@ -30,7 +30,7 @@ to work with multimedia, audio and video, of any format.
 
 # My case
 
-I needed to vertically include two videos of my screen recording into a single one on Mac (Tahoe),
+I needed to vertically include two videos of my screen recording into a single one on **Mac (Tahoe)**,
 so that both can be played at the same time.
 
 My case was very simple, and that's why I wanted a very simple way to do it quickly.
