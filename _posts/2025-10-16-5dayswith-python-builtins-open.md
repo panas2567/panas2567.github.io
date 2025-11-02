@@ -21,10 +21,11 @@ open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, clo
 
 Function `file` opens a file and returns [file-like](https://docs.python.org/3/glossary.html#term-file-object) object.
 
-## `file` &#8594; File
+## `file`
 
 The only required argument is `file`, i.e. the `str` (or `bytes`) object representing the relative or
-the absolute path to the file to be opened. There are two ways how to manipulate with an opened file-like object
+the absolute path to the file to be opened, or a file descriptor. 
+There are two ways how to manipulate with an opened file-like object
 after. 
 
 First approach, **assignment to a variable**, needs awareness of closing the file object, when the job is done.
@@ -47,7 +48,7 @@ with open("test.txt", "w") as f:
     f.write("Let's fill your void.")
 ```
 
-## `mode` &#8594; Opening mode
+## `mode`
 
 There are multiple [modes](https://docs.python.org/3/library/functions.html#open) of how we can open the file:
 
@@ -120,8 +121,6 @@ In the second case, the `read` method of the file-like object returns `bytes` in
 
 ### The `+` mode
 
----> continue here
-
 What's the difference between `w+` and `r+`?
 The opened file-like object is both readable and writable.
 The difference is only that with `w+`, then file is truncated with
@@ -137,7 +136,7 @@ some text
 </cellout>"""
 ```
 
-## `buffering` &#8594; 
+## `buffering`
 
 I like the two following description taken from a [SO question](https://stackoverflow.com/questions/29712445/what-is-the-use-of-buffering-in-pythons-built-in-open-function):
 1. The `buffering` parameter determines when the data you are sending to the stream is actually saved to the disk.
@@ -173,15 +172,24 @@ The result:
   <source src="/assets/videos/buffering-combined.mov" type="video/mp4">
 </video>
 
-## `encoding` &#8594; 
+## Other options
 
-## `errors` &#8594; 
+There are other options we can use `open` with, but these are already beyond the scope of this post.
+Hence, just let's just quickly mention them:
 
-## `newline` &#8594; 
-
-## `closefd` &#8594; 
-
-## `opener` &#8594; 
+- `encoding` &#8594; we can specify the encoding name to decode or encode the file with.
+- `errors` &#8594; relates to the `encoding` parameter, allows us to specify are encoding and decoding errors are handled.
+- `newline` &#8594; provides us with finer control of how the newline characters are parsed.
+- `closefd` &#8594; 
+  - Function `open` serves two main purposes:
+    1. to open a file from its path/name, or
+    2. to open a file with its file descriptor, 
+  - When accessing the file with its filename, `closefd` is always `True` (default).
+  - When working with the file descriptor, we might need to keep the file descriptor after the file is closed.
+    Hence, `closefd` should be set to `False` in such case.
+- `opener` &#8594; lets us specify our own `opener` function.
+  - For example, we can define the opener such that it's relative to a given directory. 
+  - Then, all files open with this custom opener specified will be considered relative to the directory defined within the opener.
 
 ## References
 
