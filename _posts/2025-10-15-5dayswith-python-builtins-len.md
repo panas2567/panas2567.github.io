@@ -12,9 +12,9 @@ toc_label: "Elements"
 toc_icon: "list-ol"  # corresponding Font Awesome icon name (without fa prefix)
 ---
 
-Function `len` returns the number of items of an object, its length.
-
 > :gear: Python version: 3.14
+
+Function `len` returns the number of items of an object, its length.
 
 The header of the function:
 

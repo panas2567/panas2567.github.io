@@ -31,7 +31,7 @@ not that regularly used (understand - by me :wink:).
 
 # [Day 2 - `len()`]({% post_url 2025-10-15-5dayswith-python-builtins-len %})
 
-# Day 3 - `open()` (coming soon)
+# [Day 3 - `open()`]({% post_url 2025-10-16-5dayswith-python-builtins-open %})
 
 # Day 4 - `dict()` (coming soon)
 
