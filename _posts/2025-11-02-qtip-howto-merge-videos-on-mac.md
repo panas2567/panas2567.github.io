@@ -5,6 +5,10 @@ categories:
 tags:
   - Mac
   - QuickTip
+
+toc: true
+toc_label: "Elements"
+toc_icon: "list-ol"  # corresponding Font Awesome icon name (without fa prefix)
 ---
 
 <span class="tldr">To merge two videos into one, one can leverage this cool **command line tool** [ffmpeg](https://www.ffmpeg.org/){:target="_blank"}.</span>
@@ -40,6 +44,11 @@ ffmpeg -i video1.mov -i video2.mov -filter_complex "vstack=inputs=2" video-combi
 ```
 
 The first line assumes the <a href="https://brew.sh/" target="_blank">Homebrew is installed</a>.
+
+The result:
+<video width="900" height="350" controls="controls">
+  <source src="/assets/videos/buffering-combined.mov" type="video/mp4">
+</video>
 
 # Other cases
 

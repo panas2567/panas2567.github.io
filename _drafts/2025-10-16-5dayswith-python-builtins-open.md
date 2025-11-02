@@ -173,8 +173,6 @@ The result:
   <source src="/assets/videos/buffering-combined.mov" type="video/mp4">
 </video>
 
-TODO: fix the video with `_ = f.write(f"round: {i}\n")` so the code on the left doesn't move
-
 ## `encoding` &#8594; 
 
 ## `errors` &#8594; 

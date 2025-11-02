@@ -84,7 +84,7 @@
         // Style the meta button like the badge (inline)
         $metaBtn.css({
           border: 'none',
-          padding: '0.35rem 0.65rem',
+          padding: '0.25rem 0.6rem',
           margin: '0',
           borderRadius: '0.45rem',
           fontWeight: 700,
