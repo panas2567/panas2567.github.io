@@ -111,8 +111,12 @@ comments:
     reactions_enabled    : "1" # '1' for enabled (default), '0' for disabled
     theme                : "preferred_color_scheme" # "light" (default), "dark", "dark_dimmed", "transparent_dark", "preferred_color_scheme"
 
-after_footer_scripts:
+after_footer_scripts: # it's important to preserve the order
+  - /assets/js/tldr.js
+  - /assets/js/code-cell.js
   - /assets/js/clipboard.js
+  - /assets/js/hide-output.js
+  - /assets/js/toggle-all-outputs.js
 
 analytics:
   provider: "google-gtag"

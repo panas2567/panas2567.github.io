@@ -118,8 +118,6 @@ after_footer_scripts: # it's important to preserve the order
   - /assets/js/hide-output.js
   - /assets/js/toggle-all-outputs.js
 
-
-
 analytics:
   provider: "google-gtag"
   google:
