@@ -24,18 +24,13 @@ not that regularly used (understand - by me :wink:).
 
 # [Day 1 - `print()`]({% post_url 2025-10-13-5dayswith-python-builtins-print %})
 
-- `sep` &#8594; Separator
-- `end` &#8594; Ending character
-- `flush` &#8594; Flush buffer
-- `file` &#8594; Output file
-
 # [Day 2 - `len()`]({% post_url 2025-10-15-5dayswith-python-builtins-len %})
 
 # [Day 3 - `open()`]({% post_url 2025-10-16-5dayswith-python-builtins-open %})
 
-# Day 4 - `dict()` (coming soon)
+# [Day 4 - `dir()`]({% post_url 2025-10-13-5dayswith-python-builtins-dir %})
 
-# Day 5 - `dir()` (coming soon)
+# Day 5 - `dict()` (coming soon)
 
 
 
