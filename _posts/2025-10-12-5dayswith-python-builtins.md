@@ -28,7 +28,7 @@ not that regularly used (understand - by me :wink:).
 
 # [Day 3 - `open()`]({% post_url 2025-10-16-5dayswith-python-builtins-open %})
 
-# [Day 4 - `dir()`]({% post_url 2025-10-13-5dayswith-python-builtins-dir %})
+# [Day 4 - `dir()`]({% post_url 2025-11-07-5dayswith-python-builtins-dir %})
 
 # Day 5 - `dict()` (coming soon)
 
